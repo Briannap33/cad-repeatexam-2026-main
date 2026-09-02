@@ -9,10 +9,10 @@ const ddbDocClient = createDDbDocClient();
 export const handler: SQSHandler = async (event) => {
   console.log("Event ", JSON.stringify(event));
 
-const AuctionType = record.sns.messageAttributes.auction_type.String;
-
   for (const record of event.Records) {
     const auctionItem = JSON.parse(record.body) as AuctionItem;
+    const AuctionType = record.sns.messageAttributes.auction_type.String;
+
     const dbItem: DBAuctionItem = {
       ...auctionItem,
       auctionType: AuctionType,
