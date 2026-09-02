@@ -3,16 +3,19 @@ import { SQSHandler } from "aws-lambda";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { DBAuctionItem , AuctionItem } from "../shared/types";
+import { RecordSet } from "aws-cdk-lib/aws-route53";
 const ddbDocClient = createDDbDocClient();
 
 export const handler: SQSHandler = async (event) => {
   console.log("Event ", JSON.stringify(event));
 
+const AuctionType = record.sns.messageAttributes.auction_type.String;
+
   for (const record of event.Records) {
     const auctionItem = JSON.parse(record.body) as AuctionItem;
     const dbItem: DBAuctionItem = {
       ...auctionItem,
-      auctionType: "Public",
+      auctionType: AuctionType,
       category: "Painting"
     }
     await ddbDocClient.send(

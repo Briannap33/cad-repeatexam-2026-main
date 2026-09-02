@@ -1,0 +1,81 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "34a66902956b031404ef497526f619b900363fe7fd65ff02b1de4c30fe10c034": {
+      "displayName": "AWS679f53fac002430cb0da5b7982bd2287/Code",
+      "source": {
+        "path": "asset.34a66902956b031404ef497526f619b900363fe7fd65ff02b1de4c30fe10c034",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-eu-west-1-e2560796": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1",
+          "objectKey": "34a66902956b031404ef497526f619b900363fe7fd65ff02b1de4c30fe10c034.zip",
+          "region": "eu-west-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-west-1"
+        }
+      }
+    },
+    "6731fd012dfd6fd82d2bdef39947dd49a3079b224b8dc1f885df64b047c02ca4": {
+      "displayName": "lambdaA/Code",
+      "source": {
+        "path": "C:\\Users\\lolie\\Desktop\\cad-repeatexam-2026-main",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-eu-west-1-d5774e47": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1",
+          "objectKey": "6731fd012dfd6fd82d2bdef39947dd49a3079b224b8dc1f885df64b047c02ca4.zip",
+          "region": "eu-west-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-west-1"
+        }
+      }
+    },
+    "d63336500ed29a532f15137e86aed54776002034f02b2628dae64b5fe27e1b03": {
+      "displayName": "lambdaB/Code",
+      "source": {
+        "path": "C:\\Users\\lolie\\Desktop\\cad-repeatexam-2026-main",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-eu-west-1-5ce5bdcb": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1",
+          "objectKey": "d63336500ed29a532f15137e86aed54776002034f02b2628dae64b5fe27e1b03.zip",
+          "region": "eu-west-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-west-1"
+        }
+      }
+    },
+    "3e08983de139f4ef3ff4ec22a098f9e2e5f11b1b19a98116255517f01649344a": {
+      "displayName": "lambdaC/Code",
+      "source": {
+        "path": "C:\\Users\\lolie\\Desktop\\cad-repeatexam-2026-main",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-eu-west-1-247aa360": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1",
+          "objectKey": "3e08983de139f4ef3ff4ec22a098f9e2e5f11b1b19a98116255517f01649344a.zip",
+          "region": "eu-west-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-west-1"
+        }
+      }
+    },
+    "b51d1ba8be1c06463c03547b4013541f1adbaef2109c6988f903c87ec02ae8a3": {
+      "displayName": "AuctionStack Template",
+      "source": {
+        "path": "AuctionStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-eu-west-1-83f89846": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1",
+          "objectKey": "b51d1ba8be1c06463c03547b4013541f1adbaef2109c6988f903c87ec02ae8a3.json",
+          "region": "eu-west-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-eu-west-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
