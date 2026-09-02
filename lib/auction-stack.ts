@@ -55,7 +55,7 @@ export class AuctionStack extends cdk.Stack {
       receiveMessageWaitTime: cdk.Duration.seconds(15)
     
     })
-    
+
     const queue = new sqs.Queue(this, "AuctionQ", {
       receiveMessageWaitTime: cdk.Duration.seconds(15),
       deadLetterQueue: {
@@ -100,9 +100,11 @@ export class AuctionStack extends cdk.Stack {
       memorySize: 128,
       environment: {
         REGION: "eu-west-1",
+        TABLE_NAME: bids.tableName,
       },
     });
 
+    
     const rejectItemFn = new lambdanode.NodejsFunction(
       this, "RejectItem",
     {
