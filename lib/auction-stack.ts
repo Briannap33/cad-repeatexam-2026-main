@@ -22,6 +22,9 @@ export class AuctionStack extends cdk.Stack {
       tableName: "Stock",
     });
 
+
+
+
     const bids = new dynamodb.Table(this, "BidsTable", {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: { name: "bidId", type: dynamodb.AttributeType.NUMBER },
@@ -47,10 +50,21 @@ export class AuctionStack extends cdk.Stack {
 
     // Integration infrastructure
 
+    // DLQ
+    const dlq = new sqs.Queue(this, "auction-dlq", {
+      receiveMessageWaitTime: cdk.Duration.seconds(15)
+    
+    })
+    
     const queue = new sqs.Queue(this, "AuctionQ", {
-      receiveMessageWaitTime: cdk.Duration.seconds(10),
+      receiveMessageWaitTime: cdk.Duration.seconds(15),
+      deadLetterQueue: {
+        queue: dlq,
+        maxReceiveCount: 1
+      }
     });
 
+    
     const topic = new sns.Topic(this, "AuctionTopic", {
       displayName: "New Image topic",
     });
@@ -67,6 +81,7 @@ export class AuctionStack extends cdk.Stack {
         REGION: "eu-west-1",
       },
     });
+    
 
     const lambdaB = new lambdanode.NodejsFunction(this, "lambdaB", {
       runtime: lambda.Runtime.NODEJS_22_X,
@@ -87,6 +102,25 @@ export class AuctionStack extends cdk.Stack {
         REGION: "eu-west-1",
       },
     });
+
+    const rejectItemFn = new lambdanode.NodejsFunction(
+      this, "RejectItem",
+    {
+      runtime: lambda.Runtime.NODEJS_LATEST,
+      entry: `${_dirname}/../lambdas/rejectItem.ts`,
+      timeout: cdk.Duration.seconds(10),
+      memorySize: 128,
+    })
+
+    const rejectItemEventSource = new events.SqsEventSource(dlq, {
+      batchSize: 3,
+      maxBatchingWindow: cdk.Duration.seconds(15)
+    })
+
+    if ("Sculpture" = "Online",
+      throw new Error ("Auction type and item are incompatible")
+    )
+
 
     // Subscriptions
 
@@ -120,3 +154,5 @@ export class AuctionStack extends cdk.Stack {
     });
   }
 }
+
+
