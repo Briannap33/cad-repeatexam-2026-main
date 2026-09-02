@@ -93,6 +93,12 @@ export class AuctionStack extends cdk.Stack {
     topic.addSubscription(
       new subs.SqsSubscription(queue, {
         rawMessageDelivery: true,
+        filterPolicy:{
+          metadata_type: sns.SubscriptionFilter.stringFilter({
+            allowlist: ["Painting" , "Sculpture" , "Jewellery"
+            ]
+          })
+        }
       })
     );
 
